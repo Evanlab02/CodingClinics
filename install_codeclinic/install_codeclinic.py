@@ -17,8 +17,8 @@ def bin_install():
     path = determine_path()
 
     rprint("    [magenta]1: Creating Binary...[/magenta]")
-    rprint("    [green]2: Created Binary[/green]")
     create_bin()
+    rprint("    [green]2: Created Binary[/green]")
     if not path_exists("dist/code_clinic"):
         raise Exception("Executable was lost")
     rprint("    [magenta]3: Making Binary Executable...")
