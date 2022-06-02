@@ -131,3 +131,6 @@ dmypy.json
 
 # Dev Files
 dev_checklist/
+
+#vscode
+.vscode/
