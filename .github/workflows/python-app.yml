@@ -29,4 +29,4 @@ jobs:
         if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
     - name: Test with unittest
       run: |
-        python3 -m unittest discover -s testing/build_testing/ -p "test_*.py"
+        python3 -m unittest discover -s testing/ -p "test_*.py"
