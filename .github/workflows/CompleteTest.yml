@@ -5,9 +5,9 @@ name: CodeClinic Testing
 
 on:
   push:
-    branches: [ main ]
+    branches: [ release, pre-release ]
   pull_request:
-    branches: [ main ]
+    branches: [ release, pre-release ]
 
 permissions:
   contents: read

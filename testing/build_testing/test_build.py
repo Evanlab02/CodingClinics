@@ -22,4 +22,7 @@ class MyTestCase(unittest.TestCase):
         """
         install_codeclinic.create_bin()
         self.assertTrue(install_helper.path_exists("dist/code_clinic"))
+        self.assertTrue(install_helper.path_exists("build/"))
         install_codeclinic.clean_bin()
+        self.assertFalse(install_helper.path_exists("dist/code_clinic"))
+        self.assertFalse(install_helper.path_exists("build/"))
