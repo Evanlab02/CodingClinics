@@ -2,7 +2,6 @@
 Primarily Tests The Install Functions
 """
 
-from importlib.resources import path
 import unittest, os
 
 from unittest.mock import patch
