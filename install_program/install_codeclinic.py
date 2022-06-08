@@ -57,7 +57,8 @@ def bin_install():
     os.system(f"sudo cp dist/code_clinic {path}")
     rprint("    [green]5: Installed Binary")
 
-    return path
+    clean_bin()
+    rprint("    [magenta]6: Cleaning up...")
 
 
 def install_codeclinics(program: str):
@@ -78,19 +79,16 @@ def install_codeclinics(program: str):
 
     if program_type == "source":
         try:
-            bin_path = bin_install()
+            bin_install()
         except FileNotFoundError as file_error:
             return f"[red]Binary Installation Failed: {file_error}[/red]"
 
-    neat_install(bin_path)
-
-    clean_bin()
-    rprint("    [magenta]13: Cleaning up...")
+    neat_install()
 
     return "[green]Installed CodeClinics[/green]"
 
 
-def neat_install(bin_path: str):
+def neat_install():
     rprint("    [magenta]7: Installing Files...[/magenta]")
     
     file_dir = f"{get_home_directory()}/.codeclinic/"
@@ -112,13 +110,12 @@ def neat_install(bin_path: str):
     install_file("files/json_files/settings.json", file_dir)
     rprint("        [green]12: Installed Settings File[/green]")
 
-    do_setup(bin_path, file_dir)
+    do_setup(file_dir)
 
 
-def do_setup(bin_path: str, file_dir: str):
+def do_setup(file_dir: str):
     rprint("Setting Up...")
     settings_json = {
-        "bin_path": bin_path,
         "file_path": file_dir,
         "calendar ID": input("Please Enter The Calendar ID of the Central Calendar: ")
     }
