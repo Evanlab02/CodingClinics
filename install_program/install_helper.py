@@ -87,3 +87,13 @@ def determine_path():
         return custom_path
 
     return default_bin_path
+
+
+def get_home_directory():
+    """Returns the HOME directory for this system"""
+    return os.getenv("HOME")
+
+
+def install_file(from_path: str, to_path: str):
+    """Copies a file from one place to another"""
+    os.system(f"cp {from_path} {to_path}")
