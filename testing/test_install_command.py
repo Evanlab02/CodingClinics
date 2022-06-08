@@ -2,7 +2,8 @@
 Primarily Tests The Install Functions
 """
 
-import unittest, os
+import unittest
+import os
 
 from unittest.mock import patch
 from io import StringIO
@@ -72,7 +73,7 @@ class MyTestCase(unittest.TestCase):
     @patch("sys.stdout", StringIO())
     def test_install_file(self):
         """Tests that install file works correctly"""
-        
+
         install_helper.install_file("testing/testing_files/testing.txt", "testing/")
         actual = install_helper.path_exists("testing/testing.txt")
         self.assertTrue(actual)

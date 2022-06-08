@@ -2,7 +2,8 @@
 Tests all file helper functions
 """
 
-import unittest, json
+import unittest
+import json
 
 from unittest.mock import patch
 from io import StringIO
@@ -23,7 +24,7 @@ class MyTestCase(unittest.TestCase):
 
         json_helper.overwrite_json(expected, "testing/testing_files/testing.json")
 
-        with open("testing/testing_files/testing.json", "r") as read_file:
+        with open("testing/testing_files/testing.json", "r", encoding="utf-8") as read_file:
             actual = json.load(read_file)
 
         self.assertEqual(expected, actual)
@@ -32,7 +33,7 @@ class MyTestCase(unittest.TestCase):
 
         json_helper.overwrite_json(expected, "testing/testing_files/testing.json")
 
-        with open("testing/testing_files/testing.json", "r") as read_file:
+        with open("testing/testing_files/testing.json", "r", encoding="utf-8") as read_file:
             actual = json.load(read_file)
 
         self.assertEqual(expected, actual)

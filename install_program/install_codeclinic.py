@@ -4,11 +4,13 @@ regardless of the install method, This redirect everything
 or do everything related to install
 """
 
-import os, sys
+import os
+import sys
 
 from rich import print as rprint
 from file_helpers.json_helper import overwrite_json
-from install_program.install_helper import *
+from install_program.install_helper import determine_path, path_exists, \
+    get_program_type, get_home_directory, install_file
 
 def create_bin():
     """
@@ -89,8 +91,10 @@ def install_codeclinics(program: str):
 
 
 def neat_install():
+    """Installs all the files that are required for Code Clinics"""
+
     rprint("    [magenta]7: Installing Files...[/magenta]")
-    
+
     file_dir = f"{get_home_directory()}/.codeclinic/"
 
     if path_exists(get_home_directory()):
@@ -111,13 +115,14 @@ def neat_install():
     rprint("        [green]12: Installed Settings File[/green]")
 
     do_setup(file_dir)
+    rprint("Thank You For Using CodeClinics")
 
 
 def do_setup(file_dir: str):
+    """Sets up the settings.json file to contain all settings of the user"""
     rprint("Setting Up...")
     settings_json = {
         "file_path": file_dir,
         "calendar ID": input("Please Enter The Calendar ID of the Central Calendar: ")
     }
     overwrite_json(settings_json, f"{file_dir}settings.json")
-    rprint("Thank You For Using CodeClinics")
