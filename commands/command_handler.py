@@ -42,7 +42,6 @@ def handle_command(command:str):
     returns:
         output: str - The last output the command must print
     """
-    do_fts()
 
     all_commands = []
 

@@ -37,3 +37,11 @@ class MyTestCase(unittest.TestCase):
             actual = json.load(read_file)
 
         self.assertEqual(expected, actual)
+
+    
+    @patch("sys.stdout", StringIO())
+    def test_json_read_file(self):
+        """Testing function reads correctly from file"""
+        expected = {"calendar_id": "fisher"}
+        actual = json_helper.read_json("testing/testing_files/invalid_key.json")
+        self.assertEqual(expected, actual)

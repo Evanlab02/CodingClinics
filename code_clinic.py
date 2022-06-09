@@ -11,6 +11,7 @@ import sys
 
 # From Import Statements
 from commands.command_handler import handle_command
+from first_time_setup.fts import do_fts
 
 def main():
     """
@@ -19,6 +20,7 @@ def main():
     """
     del sys.argv[0]
     command = " ".join(sys.argv)
+    do_fts()
     handle_command(command)
 
 
