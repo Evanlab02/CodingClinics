@@ -18,3 +18,8 @@ def overwrite_json(new_value, file_path: str):
     """
     with open(f"{file_path}", "w", encoding="utf-8") as write_file:
         json.dump(new_value, write_file)
+
+
+def read_json(file_path: str):
+    with open(f"{file_path}", "r", encoding="utf-8") as read_file:
+        return json.load(read_file)

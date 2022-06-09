@@ -132,5 +132,10 @@ dmypy.json
 # Dev Files
 dev_checklist/
 
-#vscode
+# vscode
 .vscode/
+
+# Install Script
+install.sh
+
+

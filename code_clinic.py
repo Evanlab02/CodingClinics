@@ -17,10 +17,9 @@ def main():
     Will get the command and its arguments (that were passed) in using
     sys.argv and then pass it on to be processed
     """
-    program = sys.argv[0]
     del sys.argv[0]
     command = " ".join(sys.argv)
-    handle_command(program, command)
+    handle_command(command)
 
 
 if __name__ == "__main__":

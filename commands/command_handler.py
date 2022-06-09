@@ -9,7 +9,7 @@ the input
 
 # From Import Statements
 from rich import print as rprint
-from install_program.install_codeclinic import install_codeclinics
+from first_time_setup.fts import do_fts
 
 def not_existing_command(command: str):
     """
@@ -25,7 +25,7 @@ def not_existing_command(command: str):
     return f"[red]I did not understand '{command}'.[/red]"
 
 
-def handle_command(program:str, command:str):
+def handle_command(command:str):
     """
     handle_command
 
@@ -42,13 +42,12 @@ def handle_command(program:str, command:str):
     returns:
         output: str - The last output the command must print
     """
-    all_commands = ["install"]
+    do_fts()
+
+    all_commands = []
 
     if not command in all_commands:
         output = not_existing_command(command)
-        rprint(output)
-    elif command == "install":
-        output = install_codeclinics(program)
         rprint(output)
 
     return output

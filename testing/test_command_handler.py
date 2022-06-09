@@ -25,6 +25,6 @@ class MyTestCase(unittest.TestCase):
     def test_invalid_command(self):
         """Testing invalid command"""
         expected = "[red]I did not understand 'unittests'.[/red]"
-        actual = command_handler.handle_command("code_clinic", "unittests")
+        actual = command_handler.handle_command("unittests")
         self.assertEqual(expected, actual)
         

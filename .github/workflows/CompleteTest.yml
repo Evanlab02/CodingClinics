@@ -30,5 +30,4 @@ jobs:
     - name: Test Unittest, Build and PyLint
       run: |
         python3 -m unittest discover -s testing/ -p "test_*.py"
-        python3 -m unittest discover -s testing/build_testing/ -p "test_*.py"
         pylint $(git ls-files '*.py')
