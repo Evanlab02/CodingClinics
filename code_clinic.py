@@ -11,16 +11,17 @@ import sys
 
 # From Import Statements
 from commands.command_handler import handle_command
+from first_time_setup.fts import do_fts
 
 def main():
     """
     Will get the command and its arguments (that were passed) in using
     sys.argv and then pass it on to be processed
     """
-    program = sys.argv[0]
     del sys.argv[0]
     command = " ".join(sys.argv)
-    handle_command(program, command)
+    do_fts()
+    handle_command(command)
 
 
 if __name__ == "__main__":
