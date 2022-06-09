@@ -38,7 +38,7 @@ class MyTestCase(unittest.TestCase):
 
         self.assertEqual(expected, actual)
 
-    
+
     @patch("sys.stdout", StringIO())
     def test_json_read_file(self):
         """Testing function reads correctly from file"""

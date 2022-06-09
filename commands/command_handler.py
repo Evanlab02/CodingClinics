@@ -9,7 +9,6 @@ the input
 
 # From Import Statements
 from rich import print as rprint
-from first_time_setup.fts import do_fts
 
 def not_existing_command(command: str):
     """

@@ -31,7 +31,7 @@ class MyTestCase(unittest.TestCase):
         actual = fts.get_storage_directory(home_dir)
         self.assertEqual(expected, actual)
 
-    
+
     @patch("sys.stdout", StringIO())
     def test_install_file(self):
         """Testing that files are getting copied over correctly"""
@@ -39,7 +39,7 @@ class MyTestCase(unittest.TestCase):
         self.assertTrue(os.path.exists("testing/testing.txt"))
         os.system("rm testing/testing.txt")
 
-    
+
     @patch("sys.stdout", StringIO())
     def test_install_files(self):
         """Testing that storage files are installed correctly"""
@@ -63,7 +63,7 @@ class MyTestCase(unittest.TestCase):
         """Testing that a valid path returns true"""
         actual = fts.path_exists("testing/")
         self.assertTrue(actual)
-    
+
 
     @patch("sys.stdout", StringIO())
     def test_invalid_path_exists(self):
@@ -92,7 +92,7 @@ class MyTestCase(unittest.TestCase):
         actual = fts.invalid_settings("testing/testing_files/valid.json")
         self.assertFalse(actual)
 
-    
+
     @patch("sys.stdin", StringIO("1234\n"))
     @patch("sys.stdout", StringIO())
     def test_setup_settings(self):
@@ -101,4 +101,3 @@ class MyTestCase(unittest.TestCase):
         actual = read_json("testing/testing_files/mock_settings.json")["calendarID"]
         self.assertEqual("1234", actual)
         overwrite_json({}, "testing/testing_files/mock_settings.json")
-        
