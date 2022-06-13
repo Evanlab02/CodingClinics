@@ -29,6 +29,10 @@ def install_files(storage_directory: str):
         install_file("files/json_files/settings.json", storage_directory)
         rprint("First Time Setup: Created Settings File")
 
+    if not path_exists(f"{storage_directory}credentials.json"):
+        install_file("files/json_files/credentials.json", storage_directory)
+        rprint("First Time Setup: Created Credentials File")
+
 
 def make_directory(storage_directory: str):
     """Makes a directory if it does not already exist"""

@@ -138,4 +138,5 @@ dev_checklist/
 # Install Script
 install.sh
 
-
+# Client Secret
+files/json_files/credentials.json
