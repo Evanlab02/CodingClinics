@@ -46,12 +46,12 @@ def handle_command(command:str):
 
     all_commands = ["login"]
     api_details = get_api_details()
+    output = ""
 
     if not command in all_commands:
         output = not_existing_command(command)
         rprint(output)
     elif command == "login":
-        output = do_login(api_details)
-        rprint(output)
+        do_login(api_details)
 
     return output
