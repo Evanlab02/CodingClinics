@@ -9,6 +9,8 @@ the input
 
 # From Import Statements
 from rich import print as rprint
+from google_api_helpers.api_helper import get_api_details
+from commands.clinic_login import do_login
 
 def not_existing_command(command: str):
     """
@@ -42,10 +44,14 @@ def handle_command(command:str):
         output: str - The last output the command must print
     """
 
-    all_commands = []
+    all_commands = ["login"]
+    api_details = get_api_details()
 
     if not command in all_commands:
         output = not_existing_command(command)
+        rprint(output)
+    elif command == "login":
+        output = do_login(api_details)
         rprint(output)
 
     return output

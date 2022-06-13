@@ -5,9 +5,12 @@ name = "pypi"
 
 [packages]
 coverage = "*"
-pylint = "*"
-rich = "*"
 pyinstaller = "*"
+pylint = "*"
+google-api-python-client = "*"
+google-auth-httplib2 = "*"
+google-auth-oauthlib = "*"
+rich = "*"
 
 [dev-packages]
 
