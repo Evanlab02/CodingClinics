@@ -137,6 +137,7 @@ dev_checklist/
 
 # Install Script
 install.sh
+ilog.txt
 
 # Client Secret
 files/json_files/credentials.json
