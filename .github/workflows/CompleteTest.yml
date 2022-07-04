@@ -14,7 +14,6 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -27,7 +26,58 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
-    - name: Test Unittest, Build and PyLint
+    - name: Test Build
+      run: |
+        python3 -m PyInstaller --onefile code_clinic.py
+    
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
+    - name: Unittesting
       run: |
         python3 -m unittest discover -s testing/ -p "test_*.py"
+  
+  coverage:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
+    - name: Testing Coverage Report
+      run: |
+        coverage run -m unittest discover -s testing/ -p "test_*.py"
+        coverage report
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
+    - name: Linting
+      run: |
         pylint $(git ls-files '*.py')
