@@ -27,6 +27,9 @@ coverage:
 	@coverage report 
 	@rm .coverage
 
+install: build
+	@sudo cp dist/code_clinic /usr/local/bin/
+
 test:
 	@echo "Testing the code base..."
 	@sleep 1
