@@ -28,7 +28,7 @@ jobs:
         if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
     - name: Test Build
       run: |
-        python3 -m PyInstaller --onefile code_clinic.py
+        make build
     
   test:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
         if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
     - name: Unittesting
       run: |
-        python3 -m unittest discover -s testing/ -p "test_*.py"
+        make test
   
   coverage:
     runs-on: ubuntu-latest
@@ -62,8 +62,7 @@ jobs:
         if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
     - name: Testing Coverage Report
       run: |
-        coverage run -m unittest discover -s testing/ -p "test_*.py"
-        coverage report
+        make coverage 
 
   lint:
     runs-on: ubuntu-latest
