@@ -69,4 +69,8 @@ jobs:
     #   ./location_of_script_within_repo/buildscript.sh
 
     - name: Perform CodeQL Analysis
+      setup-python-dependencies: false
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
       uses: github/codeql-action/analyze@v2
