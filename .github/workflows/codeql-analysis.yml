@@ -70,7 +70,7 @@ jobs:
 
     - name: Perform CodeQL Analysis
       setup-python-dependencies: false
-      run: |
+      uses: | 
         python -m pip install --upgrade pip
         if [ -f files/requirements.txt ]; then pip install -r files/requirements.txt; fi
-      uses: github/codeql-action/analyze@v2
+        github/codeql-action/analyze@v2
