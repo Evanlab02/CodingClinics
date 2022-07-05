@@ -1,8 +1,23 @@
 all:
-	make build
-	make coverage
-	make test
-	make clean
+	@echo "Checking"
+	@sleep 5
+	@make check
+	@echo "Graph"
+	@sleep 5
+	@make graph
+	@echo "Updating"
+	@sleep 5
+	@make update
+	@echo "Verifying"
+	@sleep 5
+	@make verify 
+	@echo "Coverage"
+	@sleep 5
+	@make coverage
+	@echo "Testing"
+	@sleep 5
+	@make Testing
+
 
 build:
 	@echo "Creating Executable ..."
