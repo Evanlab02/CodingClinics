@@ -16,7 +16,16 @@ all:
 	@make coverage
 	@echo "Testing"
 	@sleep 5
-	@make Testing
+	@make test
+	@echo "Building"
+	@sleep 5
+	@make build
+	@echo "Installing"
+	@sleep 5
+	@make install
+	@echo "Cleaning"
+	@sleep 5
+	@make clean
 
 
 build:
