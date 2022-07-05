@@ -30,18 +30,33 @@ def create_token(storage_directory: str, permission):
 
 
 def token_valid(creds):
+    """
+    Checks that the token exists and is valid
+    """
     return creds and creds.valid
 
 
 def token_expired(creds):
+    """
+    Checks that the token exists and is expired or needs to be refreshed
+    """
     return creds and creds.expired and creds.refresh_token
 
 
 def check_token(creds):
+    """
+    Checks that the token is valid and not expired, if it
+    meets both these conditions will return True, otherwise False
+    """
     return token_valid(creds) and not token_expired(creds)
-        
+
 
 def load_token(storage_directory: str, permission):
+    """
+    Will load the token off of the token.json file, if
+    there is nothing to load, it will return None
+    """
+    creds = None
     if path_exists(f'{storage_directory}token.json'):
         creds = Credentials.from_authorized_user_file(f'{storage_directory}token.json', permission)
-        return creds
+    return creds

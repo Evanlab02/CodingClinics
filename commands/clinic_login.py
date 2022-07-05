@@ -24,14 +24,18 @@ def start_login(api_details: dict):
 
 
 def check_logged_in(storage_directory: str, permission):
-    do_login = True
+    """
+    Checks if the user is logged in, and if the user is logged in
+    confirms if they want to login again or not
+    """
+    should_login = True
     creds = load_token(storage_directory, permission)
 
     if check_token(creds):
-        do_login = input("You are already logged in, do you wish to log in again [y/n]: ")\
+        should_login = input("You are already logged in, do you wish to log in again [y/n]: ")\
             .lower() != "n"
 
-    if not do_login:
+    if not should_login:
         sys.exit("Cancelled Login!")
 
 
