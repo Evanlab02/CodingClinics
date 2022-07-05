@@ -21,6 +21,13 @@ clean: build
 	@echo "Cleaned Up"
 	@sleep 1
 
+check:
+	@echo "Checking requirements..."
+	@sleep 1
+	@pipenv check
+	@echo "Checked requirements"
+	@sleep 1
+
 coverage:
 	@echo "Running Coverage on code base tests..."
 	@sleep 1
