@@ -39,6 +39,13 @@ test:
 	@sleep 1
 	@python3 -m unittest discover -s testing/ -p "test_*.py"
 
+requirements:
+	@echo "Installing requirements..."
+	@sleep 1
+	@pip install -r files/requirements.txt
+	@echo "Installed requirements"
+	@sleep 1
+
 update:
 	@echo "Updating PIP..."
 	@sleep 1
