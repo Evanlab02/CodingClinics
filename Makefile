@@ -14,6 +14,7 @@ build:
 clean: build
 	@echo "Cleaning Up..."
 	@sleep 1
+	@pipenv clean
 	@rm -r build/
 	@rm -r dist/
 	@rm -r code_clinic.spec
