@@ -5,7 +5,7 @@ all:
 	make clean
 
 build:
-	@echo "Creating Exectuable ..."
+	@echo "Creating Executable ..."
 	@sleep 2
 	@python3 -m PyInstaller --onefile code_clinic.py
 	@echo "Created Exectuable"
@@ -14,10 +14,18 @@ build:
 clean: build
 	@echo "Cleaning Up..."
 	@sleep 1
+	@pipenv clean
 	@rm -r build/
 	@rm -r dist/
 	@rm -r code_clinic.spec
 	@echo "Cleaned Up"
+	@sleep 1
+
+check:
+	@echo "Checking requirements..."
+	@sleep 1
+	@pipenv check
+	@echo "Checked requirements"
 	@sleep 1
 
 coverage:
@@ -27,10 +35,54 @@ coverage:
 	@coverage report 
 	@rm .coverage
 
+graph:
+	@pipenv graph
+
 install: build
+	@echo "-UNSTABLE- Installing code_clinic ..."
+	@sleep 1
 	@sudo cp dist/code_clinic /usr/local/bin/
+	@echo "-UNSTABLE- Installed code_clinic"
+	@sleep 1
 
 test:
 	@echo "Testing the code base..."
 	@sleep 1
 	@python3 -m unittest discover -s testing/ -p "test_*.py"
+
+update:
+	@echo "Updating PIP..."
+	@sleep 1
+	@python -m pip install --upgrade pip
+	@echo "Updated PIP"
+	@sleep 1
+	@echo "PIPENV - Locking..."
+	@sleep 1
+	@pipenv lock
+	@echo "PIPENV - Locked"
+	@sleep 1
+	@echo "PIPENV - Updating requirements.txt..."
+	@sleep 1
+	@pipenv lock -r > files/requirements.txt
+	@echo "PIPENV - Updated requirements.txt"
+	@sleep 1
+	@echo "PIPENV - Syncing..."
+	@sleep 1
+	@pipenv sync
+	@echo "PIPENV - Synced"
+	@sleep 1
+	@echo "Installing requirements..."
+	@sleep 1
+	@pip install -r files/requirements.txt
+	@echo "Installed requirements"
+	@sleep 1
+
+verify:
+	@echo "Verifying..."
+	@sleep 1
+	@pipenv verify
+	@echo "Verified"
+	@sleep 1
+
+shell:
+	@pipenv shell
