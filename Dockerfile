@@ -10,4 +10,4 @@ COPY . .
 RUN python3 -m pip install --upgrade pip
 RUN pip install -r files/requirements.txt
 
-ENTRYPOINT ["python", "code_clinic.py"]
+ENTRYPOINT ["python3", "code_clinic.py"]
