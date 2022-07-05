@@ -53,3 +53,6 @@ update:
 	@python -m pip install --upgrade pip
 	@echo "Updated PIP"
 	@sleep 1
+
+shell:
+	@pipenv shell
