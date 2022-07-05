@@ -1,11 +1,11 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get install python3
+RUN apt-get install python3-pip
 
-ADD dist/code_clinic src/code_clinic
+COPY . .
 
-RUN chmod +X src/code_clinic
+RUN python -m pip install --upgrade pip
+RUN pip install -r files/requirements.txt
 
-WORKDIR /src
-CMD ["code_clinic", "help"]
+ENTRYPOINT ["python", "code_clinic.py"]
