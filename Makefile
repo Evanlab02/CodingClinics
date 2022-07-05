@@ -35,6 +35,9 @@ coverage:
 	@coverage report 
 	@rm .coverage
 
+graph:
+	@pipenv graph
+
 install: build
 	@echo "-UNSTABLE- Installing code_clinic ..."
 	@sleep 1
