@@ -79,5 +79,12 @@ update:
 	@echo "Updated PIP"
 	@sleep 1
 
+verify:
+	@echo "Verifying..."
+	@sleep 1
+	@pipenv verify
+	@echo "Verified"
+	@sleep 1
+
 shell:
 	@pipenv shell
