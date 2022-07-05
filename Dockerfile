@@ -1,8 +1,9 @@
 FROM ubuntu:latest
 
 RUN apt-get update
-RUN apt-get install python3-pip
-RUN apt-get install make
+RUN apt-get -y install python3.10
+RUN apt-get -y install python3-pip
+RUN apt-get -y install make
 
 COPY . .
 
