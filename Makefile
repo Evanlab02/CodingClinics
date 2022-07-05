@@ -51,6 +51,11 @@ test:
 	@python3 -m unittest discover -s testing/ -p "test_*.py"
 
 requirements:
+	@echo "PIPENV - Locking..."
+	@sleep 1
+	@pipenv lock
+	@echo "PIPENV - Locked"
+	@sleep 1
 	@echo "Installing requirements..."
 	@sleep 1
 	@pip install -r files/requirements.txt
