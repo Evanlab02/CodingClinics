@@ -61,6 +61,11 @@ requirements:
 	@pipenv lock -r > requirements.txt
 	@echo "PIPENV - Updated requirements.txt"
 	@sleep 1
+	@echo "PIPENV - Syncing..."
+	@sleep 1
+	@pipenv sync
+	@echo "PIPENV - Synced"
+	@sleep 1
 	@echo "Installing requirements..."
 	@sleep 1
 	@pip install -r files/requirements.txt
