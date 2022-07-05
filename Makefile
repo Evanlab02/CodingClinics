@@ -28,7 +28,11 @@ coverage:
 	@rm .coverage
 
 install: build
+	@echo "-UNSTABLE- Installing code_clinic ..."
+	@sleep 1
 	@sudo cp dist/code_clinic /usr/local/bin/
+	@echo "-UNSTABLE- Installed code_clinic"
+	@sleep 1
 
 test:
 	@echo "Testing the code base..."
