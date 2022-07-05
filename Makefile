@@ -38,3 +38,10 @@ test:
 	@echo "Testing the code base..."
 	@sleep 1
 	@python3 -m unittest discover -s testing/ -p "test_*.py"
+
+update:
+	@echo "Updating PIP..."
+	@sleep 1
+	@python -m pip install --upgrade pip
+	@echo "Updated PIP"
+	@sleep 1
