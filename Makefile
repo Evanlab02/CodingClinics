@@ -5,7 +5,7 @@ all:
 	make clean
 
 build:
-	@echo "Creating Exectuable ..."
+	@echo "Creating Executable ..."
 	@sleep 2
 	@python3 -m PyInstaller --onefile code_clinic.py
 	@echo "Created Exectuable"
@@ -50,7 +50,12 @@ test:
 	@sleep 1
 	@python3 -m unittest discover -s testing/ -p "test_*.py"
 
-requirements:
+update:
+	@echo "Updating PIP..."
+	@sleep 1
+	@python -m pip install --upgrade pip
+	@echo "Updated PIP"
+	@sleep 1
 	@echo "PIPENV - Locking..."
 	@sleep 1
 	@pipenv lock
@@ -58,7 +63,7 @@ requirements:
 	@sleep 1
 	@echo "PIPENV - Updating requirements.txt..."
 	@sleep 1
-	@pipenv lock -r > requirements.txt
+	@pipenv lock -r > files/requirements.txt
 	@echo "PIPENV - Updated requirements.txt"
 	@sleep 1
 	@echo "PIPENV - Syncing..."
@@ -70,13 +75,6 @@ requirements:
 	@sleep 1
 	@pip install -r files/requirements.txt
 	@echo "Installed requirements"
-	@sleep 1
-
-update:
-	@echo "Updating PIP..."
-	@sleep 1
-	@python -m pip install --upgrade pip
-	@echo "Updated PIP"
 	@sleep 1
 
 verify:
