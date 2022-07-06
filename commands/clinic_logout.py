@@ -6,9 +6,8 @@ from datetime import datetime
 from rich import print as rprint
 from first_time_setup.fts import get_home_directory, get_storage_directory
 
-def start_logout(api_details: dict):
+def start_logout(api_details: dict, storage_directory: str):
     """Logs that the logout process is starting"""
-    storage_directory = get_storage_directory(get_home_directory())
     permission = api_details["permissions"]
     creds = api_details["credentials"]
 
@@ -22,5 +21,5 @@ def start_logout(api_details: dict):
 
 def do_logout(api_details: dict):
     """Does all Logout related functions - main function for this module"""
-    # storage_directory = get_storage_directory(get_home_directory())
-    start_logout(api_details)
+    storage_directory = get_storage_directory(get_home_directory())
+    start_logout(api_details, storage_directory)
