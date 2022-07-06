@@ -18,4 +18,4 @@ def start_logout(api_details: dict):
 
 def do_logout(api_details: dict):
     storage_directory = get_storage_directory(get_home_directory())
-    start_logout()
+    start_logout(api_details)
