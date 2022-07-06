@@ -75,6 +75,13 @@ test:
 	@python3 -m unittest discover -s testing/ -p "test_*.py"
 
 update:
+	@echo "Installing requirements..."
+	@sleep 1
+	@pip install -r files/requirements.txt
+	@echo "Installed requirements"
+	@sleep 1
+
+update-env:
 	@echo "Updating PIP..."
 	@sleep 1
 	@python -m pip install --upgrade pip
@@ -94,11 +101,6 @@ update:
 	@sleep 1
 	@pipenv sync
 	@echo "PIPENV - Synced"
-	@sleep 1
-	@echo "Installing requirements..."
-	@sleep 1
-	@pip install -r files/requirements.txt
-	@echo "Installed requirements"
 	@sleep 1
 
 verify:
