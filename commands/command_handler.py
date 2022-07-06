@@ -11,6 +11,7 @@ the input
 from rich import print as rprint
 from google_api_helpers.api_helper import get_api_details
 from commands.clinic_login import do_login
+from commands.clinic_logout import do_logout
 
 def not_existing_command(command: str):
     """
@@ -44,7 +45,7 @@ def handle_command(command:str):
         output: str - The last output the command must print
     """
 
-    all_commands = ["login"]
+    all_commands = ["login", "logout"]
     api_details = get_api_details()
     output = ""
 
@@ -53,5 +54,7 @@ def handle_command(command:str):
         rprint(output)
     elif command == "login":
         do_login(api_details)
+    elif command == "logout":
+        do_logout(api_details)
 
     return output

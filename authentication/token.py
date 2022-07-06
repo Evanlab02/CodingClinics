@@ -1,6 +1,8 @@
 """Module containing all functions related to writing and reading
 the token.json"""
 
+import os
+
 from datetime import datetime
 from rich import print as rprint
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -60,3 +62,12 @@ def load_token(storage_directory: str, permission):
     if path_exists(f'{storage_directory}token.json'):
         creds = Credentials.from_authorized_user_file(f'{storage_directory}token.json', permission)
     return creds
+
+
+def remove_token(storage_directory: str):
+    """Will delete the token.json at the storage directory"""
+    token_exists = False
+    if path_exists(f"{storage_directory}token.json"):
+        os.system(f"rm {storage_directory}token.json")
+        token_exists = True
+    return token_exists
