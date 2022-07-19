@@ -28,7 +28,7 @@ def install_files(storage_directory: str):
     if not path_exists(f"{storage_directory}log.txt"):
         os.system(f"touch {storage_directory}log.txt")
 
-    
+
 def make_directory(storage_directory: str):
     """Makes a directory if it does not already exist"""
     if not path_exists(storage_directory):
