@@ -94,7 +94,7 @@ update-env:
 	@sleep 1
 	@echo "PIPENV - Updating requirements.txt..."
 	@sleep 1
-	@pipenv lock -r > files/requirements.txt
+	@pipenv lock -r > requirements.txt
 	@echo "PIPENV - Updated requirements.txt"
 	@sleep 1
 	@echo "PIPENV - Syncing..."
