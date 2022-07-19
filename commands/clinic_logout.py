@@ -36,10 +36,10 @@ def do_logout(api_details: dict):
     """Does all Logout related functions - main function for this module"""
     storage_directory = get_storage_directory(get_home_directory())
     start_logout(api_details, storage_directory)
-    
+
     if remove_token(storage_directory):
         end_logout(api_details, storage_directory)
     else:
         rprint("[magenta]No user is logged in")
-    
+
     sys.exit()
