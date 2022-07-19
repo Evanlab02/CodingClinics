@@ -1,5 +1,6 @@
 """Keeps all the functions related to first time setup"""
 import os
+import sys
 
 from rich import print as rprint
 from file_helpers.json_helper import read_json, overwrite_json
@@ -14,24 +15,18 @@ def get_storage_directory(home_dir: str):
     return f"{home_dir}/.codeclinic/"
 
 
-def install_file(from_path: str, to_path: str):
-    """Copies a file from one place to another"""
-    os.system(f"cp {from_path} {to_path}")
-
-
 def install_files(storage_directory: str):
     """Installs all program files into the specified storage directory"""
-    if not path_exists(f"{storage_directory}log.txt"):
-        install_file("files/text_files/log.txt", storage_directory)
-        rprint("First Time Setup: Created Log File")
+    if not path_exists(f"{storage_directory}credentials.json"):
+        rprint("[red]Please Install Credentials File[/red]")
+        sys.exit(1)
 
     if not path_exists(f"{storage_directory}settings.json"):
-        install_file("files/json_files/settings.json", storage_directory)
-        rprint("First Time Setup: Created Settings File")
+        os.system(f"touch {storage_directory}settings.json")
+        overwrite_json({}, f"{storage_directory}settings.json")
 
-    if not path_exists(f"{storage_directory}credentials.json"):
-        install_file("files/json_files/credentials.json", storage_directory)
-        rprint("First Time Setup: Created Credentials File")
+    if not path_exists(f"{storage_directory}log.txt"):
+        os.system(f"touch {storage_directory}log.txt")
 
 
 def make_directory(storage_directory: str):

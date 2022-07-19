@@ -33,24 +33,6 @@ class MyTestCase(unittest.TestCase):
 
 
     @patch("sys.stdout", StringIO())
-    def test_install_file(self):
-        """Testing that files are getting copied over correctly"""
-        fts.install_file("testing/testing_files/testing.txt", "testing/")
-        self.assertTrue(os.path.exists("testing/testing.txt"))
-        os.system("rm testing/testing.txt")
-
-
-    @patch("sys.stdout", StringIO())
-    def test_install_files(self):
-        """Testing that storage files are installed correctly"""
-        fts.install_files("testing/")
-        self.assertTrue(os.path.exists("testing/log.txt"))
-        self.assertTrue(os.path.exists("testing/settings.json"))
-        os.system("rm testing/log.txt")
-        os.system("rm testing/settings.json")
-
-
-    @patch("sys.stdout", StringIO())
     def test_make_directory(self):
         """Testing that the storage directory is created correctly"""
         fts.make_directory("testing/testing_directory/")
