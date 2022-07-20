@@ -1,11 +1,12 @@
 """Tests Settings.py file"""
 
+# pylint: disable=import-error
+
 import unittest
 
 from unittest.mock import patch
 from io import StringIO
 from first_time_setup.settings import settings
-
 
 class MyTestCase(unittest.TestCase):
     """
@@ -32,7 +33,7 @@ class MyTestCase(unittest.TestCase):
 
     @patch("sys.stdout", StringIO())
     def test_check_invalid_settings_no_data_formatting(self):
-        """Tests check_settings function on a invalid settings file with no 
+        """Tests check_settings function on a invalid settings file with no
         data formatting key-value pair"""
         mock_settings = {"calendarID": "ABCD"}
         actual = settings.check_settings(mock_settings)
@@ -49,7 +50,7 @@ class MyTestCase(unittest.TestCase):
 
     @patch("sys.stdout", StringIO())
     def test_check_invalid_settings_keys(self):
-        """Tests check_keys function on a invalid settings file with no 
+        """Tests check_keys function on a invalid settings file with no
         data format key-value pair"""
         mock_settings = {"calendarID": ""}
         actual = settings.check_keys(mock_settings.keys())
@@ -70,3 +71,29 @@ class MyTestCase(unittest.TestCase):
         mock_settings = {"DATA FORMAT": "XML"}
         actual = settings.check_data_format(mock_settings)
         self.assertEqual(False, actual)
+
+
+    @patch("sys.stdout", StringIO())
+    def test_update_settings(self):
+        """Tests update_settings function"""
+        mock_settings = {"CalendarID": "XML"}
+        actual = settings.update_settings(mock_settings, "XML")
+        self.assertEqual({"CalendarID": "XML", "DATA FORMAT": "XML"}, actual)
+
+
+    @patch("sys.stdout", StringIO())
+    def test_complete_settings_valid_setings(self):
+        """Tests check_data_format function on a invalid data format - xml"""
+        mock_file = "mock_valid_settings.json"
+        actual = settings.complete_settings(self.STORAGE_DIRECTORY, mock_file)
+        self.assertEqual({"CalendarID": "XML", "DATA FORMAT": "JSON"}, actual)
+
+
+    @patch("sys.stdout", StringIO())
+    def test_save_settings(self):
+        """Tests check_data_format function on a invalid data format - xml"""
+        mock_file = "mock_save_settings.json"
+        settings.save_settings(self.STORAGE_DIRECTORY, mock_file, {"SETTINGS": "SETTINGS"})
+        actual = settings.load_settings(self.STORAGE_DIRECTORY, mock_file)
+        self.assertEqual({"SETTINGS": "SETTINGS"}, actual)
+        settings.save_settings(self.STORAGE_DIRECTORY, mock_file, {})
