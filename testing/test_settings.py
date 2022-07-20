@@ -6,7 +6,7 @@ import unittest
 
 from unittest.mock import patch
 from io import StringIO
-from first_time_setup.settings import settings
+from first_time_setup import settings
 
 class MyTestCase(unittest.TestCase):
     """

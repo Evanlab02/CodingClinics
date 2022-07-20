@@ -59,7 +59,7 @@ def complete_settings(storage_directory: str, file_name: str):
     """Completes Settings Setup"""
     settings = load_settings(storage_directory, file_name)
 
-    while check_settings(settings):
+    while not check_settings(settings):
         data_format = get_data_format()
         settings = update_settings(settings, data_format)
         save_settings(storage_directory, file_name, settings)
