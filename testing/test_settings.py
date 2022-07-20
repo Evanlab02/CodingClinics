@@ -76,9 +76,9 @@ class MyTestCase(unittest.TestCase):
     @patch("sys.stdout", StringIO())
     def test_update_settings(self):
         """Tests update_settings function"""
-        mock_settings = {"CalendarID": "XML"}
+        mock_settings = {"calendarID": "XML"}
         actual = settings.update_settings(mock_settings, "XML")
-        self.assertEqual({"CalendarID": "XML", "DATA FORMAT": "XML"}, actual)
+        self.assertEqual({"calendarID": "XML", "DATA FORMAT": "XML"}, actual)
 
 
     @patch("sys.stdout", StringIO())
@@ -86,7 +86,7 @@ class MyTestCase(unittest.TestCase):
         """Tests check_data_format function on a invalid data format - xml"""
         mock_file = "mock_valid_settings.json"
         actual = settings.complete_settings(self.STORAGE_DIRECTORY, mock_file)
-        self.assertEqual({"CalendarID": "XML", "DATA FORMAT": "JSON"}, actual)
+        self.assertEqual({"calendarID": "XML", "DATA FORMAT": "JSON"}, actual)
 
 
     @patch("sys.stdout", StringIO())
