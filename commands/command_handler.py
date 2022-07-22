@@ -6,9 +6,11 @@ its main function and redirect it to the correct modules
 or functions to start producing the output and/or process
 the input
 """
+import sys
 
 # From Import Statements
 from rich import print as rprint
+from authentication.check_login import check_login
 from google_api_helpers.api_helper import get_api_details
 from commands.clinic_login import do_login
 from commands.clinic_logout import do_logout
@@ -56,5 +58,12 @@ def handle_command(command:str):
         do_login(api_details)
     elif command == "logout":
         do_logout(api_details)
+
+    logged_in, program_details = check_login()
+    if not logged_in:
+        rprint("[yellow]Please login using 'code_clinic login'[/yellow]")
+        sys.exit()
+
+    rprint(program_details)
 
     return output
