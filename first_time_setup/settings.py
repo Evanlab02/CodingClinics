@@ -69,7 +69,7 @@ def complete_settings(storage_directory: str, file_name: str):
 
 def get_data_format():
     """Gets the data format the user would like to use"""
-    data_formats = ["JSON"]
+    data_formats = ["JSON - {'Example': 'Example'} (Default)"]
 
     data_formats_inquirer = [
         inquirer.List('Data Format',
@@ -79,4 +79,4 @@ def get_data_format():
             ),
     ]
     selected = inquirer.prompt(data_formats_inquirer)
-    return selected["Data Format"]
+    return selected["Data Format"].split(" - ")[0]
